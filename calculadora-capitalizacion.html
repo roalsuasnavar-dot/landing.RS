@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Calculadora de Capitalización · Romina Suasnavar</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --crema:        #FAF7F1;
+  --arena:        #F0E9D8;
+  --arena-dark:   #E0D4BC;
+  --arena-deep:   #C8B99A;
+  --grafito:      #1E1E1C;
+  --grafito-mid:  #3A3A38;
+  --grafito-soft: #6E6A62;
+  --verde:        #1A5C38;
+  --verde-mid:    #236B44;
+  --verde-light:  #E6F2EC;
+  --dorado:       #B8924A;
+  --dorado-light: #F5EAD4;
+  --blanco:       #FDFBF7;
+  --ff: 'Montserrat', sans-serif;
+  --max: 760px;
+  --r: 3px;
+  --rlg: 10px;
+  --sombra: 0 2px 20px rgba(30,30,28,0.07);
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: var(--ff); background: var(--crema); color: var(--grafito); line-height: 1.7; -webkit-font-smoothing: antialiased; }
+a { color: inherit; text-decoration: none; }
+.wrap { max-width: var(--max); margin: 0 auto; padding: 0 1.75rem; }
+
+.label {
+  font-size: 10px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--dorado); display: block; margin-bottom: 1rem;
+}
+
+/* NAV */
+nav {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 1.4rem 1.75rem; border-bottom: 1px solid var(--arena-dark);
+}
+.nav-logo { font-size: 13px; font-weight: 600; letter-spacing: 0.08em; color: var(--grafito); }
+.nav-logo span { color: var(--dorado); }
+.nav-btn {
+  font-size: 10.5px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--blanco); background: var(--verde); padding: 9px 22px; border-radius: var(--r);
+}
+
+/* HEADER */
+header.top { padding: 3.2rem 0 1rem; max-width: var(--max); margin: 0 auto; padding-left: 1.75rem; padding-right: 1.75rem; }
+h1.headline {
+  font-size: clamp(28px, 4.6vw, 42px); font-weight: 700; color: var(--grafito);
+  letter-spacing: -0.02em; line-height: 1.15; max-width: 560px;
+}
+h1.headline em { font-style: italic; font-weight: 300; color: var(--verde); }
+p.sub { font-size: 14px; color: var(--grafito-soft); font-weight: 300; margin-top: 1rem; max-width: 460px; line-height: 1.75; }
+
+/* CALCULATOR */
+.calc-card {
+  background: var(--blanco); border: 1px solid var(--arena-dark); border-radius: var(--rlg);
+  margin: 2.4rem auto 1.4rem; max-width: var(--max); overflow: hidden;
+}
+.calc-grid { display: grid; grid-template-columns: 1fr 1fr; }
+@media (max-width: 720px) { .calc-grid { grid-template-columns: 1fr; } }
+
+.inputs-pane { padding: 2.2rem 2rem; }
+.field { margin-bottom: 1.6rem; }
+.field:last-child { margin-bottom: 0; }
+.field-label { display: flex; justify-content: space-between; align-items: baseline; font-size: 12px; font-weight: 600; color: var(--grafito); margin-bottom: 0.7rem; }
+.field-value { font-size: 14px; font-weight: 600; color: var(--verde); }
+input[type="range"] {
+  -webkit-appearance: none; width: 100%; height: 3px; border-radius: 2px; background: var(--arena-dark); outline: none;
+}
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none; width: 17px; height: 17px; border-radius: 50%;
+  background: var(--dorado); border: 2.5px solid var(--blanco); box-shadow: 0 0 0 1px var(--dorado); cursor: pointer;
+}
+input[type="range"]::-moz-range-thumb {
+  width: 17px; height: 17px; border-radius: 50%; background: var(--dorado); border: 2.5px solid var(--blanco);
+  box-shadow: 0 0 0 1px var(--dorado); cursor: pointer;
+}
+.field-hint { font-size: 11px; color: var(--grafito-soft); font-weight: 300; margin-top: 0.6rem; line-height: 1.55; }
+
+.result-pane {
+  background: var(--verde); padding: 2.2rem 2rem; display: flex; flex-direction: column; justify-content: center; color: var(--crema);
+}
+.result-label { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(250,247,241,0.6); font-weight: 700; }
+.result-number { font-size: clamp(36px, 6vw, 48px); font-weight: 700; margin-top: 0.5rem; line-height: 1; color: var(--blanco); letter-spacing: -0.01em; }
+.result-breakdown { display: flex; gap: 1.8rem; margin-top: 1.4rem; padding-top: 1.2rem; border-top: 1px solid rgba(250,247,241,0.16); }
+.bd-item .bd-label { font-size: 10px; color: rgba(250,247,241,0.5); text-transform: uppercase; letter-spacing: 0.06em; font-weight: 700; }
+.bd-item .bd-value { font-size: 18px; font-weight: 600; margin-top: 0.3rem; color: var(--crema); }
+.bd-item.growth .bd-value { color: #A8DDBE; }
+.assumption-note { margin-top: 1.3rem; padding-top: 1rem; border-top: 1px solid rgba(250,247,241,0.16); font-size: 11px; color: rgba(250,247,241,0.6); font-weight: 300; line-height: 1.55; }
+
+/* TIMELINE */
+.timeline-section { max-width: var(--max); margin: 2.6rem auto 1.4rem; padding: 0 1.75rem; }
+.timeline-title { font-size: 22px; font-weight: 700; color: var(--grafito); margin-bottom: 0.5rem; letter-spacing: -0.01em; }
+.timeline-desc { font-size: 13px; color: var(--grafito-soft); font-weight: 300; margin-bottom: 1.6rem; max-width: 500px; line-height: 1.7; }
+.timeline-card { background: var(--blanco); border: 1px solid var(--arena-dark); border-radius: var(--rlg); padding: 1.8rem 1.6rem 1.4rem; }
+#chartSvg { width: 100%; height: auto; display: block; }
+.milestones { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 1.2rem; }
+@media (max-width: 640px) { .milestones { grid-template-columns: repeat(2, 1fr); } }
+.milestone { padding: 0.9rem 0.8rem; border-radius: 8px; background: var(--arena); border: 1px solid var(--arena-dark); }
+.milestone .m-age { font-size: 10px; font-weight: 700; color: var(--dorado); text-transform: uppercase; letter-spacing: 0.04em; }
+.milestone .m-val { font-size: 16px; font-weight: 700; color: var(--grafito); margin-top: 0.3rem; }
+.milestone .m-tag { font-size: 10.5px; color: var(--grafito-soft); font-weight: 300; margin-top: 0.2rem; }
+
+/* CTA */
+.cta-card {
+  max-width: var(--max); margin: 2rem auto 1.2rem; padding: 0 1.75rem;
+}
+.cta-inner {
+  background: var(--arena); border: 1px solid var(--arena-dark); border-radius: var(--rlg);
+  padding: 1.8rem 1.8rem; display: flex; align-items: center; justify-content: space-between; gap: 1.2rem; flex-wrap: wrap;
+}
+.cta-text h3 { font-size: 18px; font-weight: 700; color: var(--grafito); margin-bottom: 0.4rem; }
+.cta-text p { font-size: 12.5px; color: var(--grafito-soft); font-weight: 300; max-width: 340px; line-height: 1.6; }
+.btn-verde {
+  display: inline-flex; align-items: center; gap: 8px; font-size: 11px; font-weight: 700; letter-spacing: 0.1em;
+  text-transform: uppercase; background: var(--verde); color: var(--blanco); padding: 13px 26px; border-radius: var(--r);
+  white-space: nowrap; flex-shrink: 0; transition: background 0.2s;
+}
+.btn-verde:hover { background: var(--verde-mid); }
+
+.disclaimer { max-width: var(--max); margin: 0 auto; padding: 0 1.75rem 1.6rem; font-size: 10.5px; color: var(--grafito-soft); font-weight: 300; text-align: center; line-height: 1.75; }
+footer { text-align: center; padding: 1.6rem 1.75rem 2.6rem; }
+.footer-mat { font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--verde-mid); opacity: 0.7; }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">rs<span>.</span>finanzas.seguros</div>
+  <a href="index.html" class="nav-btn">Volver</a>
+</nav>
+
+<header class="top">
+  <span class="label">Capitalización en USD</span>
+  <h1 class="headline">Mirá en cuánto se puede convertir <em>tu ahorro.</em></h1>
+  <p class="sub">Movés los valores, ves el número crecer. Con una tasa conservadora, para que lo que imaginás hoy tenga chances reales de sostenerse.</p>
+</header>
+
+<div class="calc-card">
+  <div class="calc-grid">
+    <div class="inputs-pane">
+      <div class="field">
+        <div class="field-label"><span>Tu edad hoy</span><span class="field-value" id="ageVal">32 años</span></div>
+        <input type="range" id="age" min="25" max="45" value="32" step="1">
+      </div>
+      <div class="field">
+        <div class="field-label"><span>Edad a la que querés retirarte</span><span class="field-value" id="retireVal">60 años</span></div>
+        <input type="range" id="retireAge" min="50" max="70" value="60" step="1">
+      </div>
+      <div class="field">
+        <div class="field-label"><span>Aporte mensual</span><span class="field-value" id="monthlyVal">USD 300</span></div>
+        <input type="range" id="monthly" min="50" max="2000" value="300" step="10">
+        <div class="field-hint">Lo que hoy podés destinar todos los meses, en dólares.</div>
+      </div>
+      <div class="field">
+        <div class="field-label"><span>Rendimiento anual estimado</span><span class="field-value" id="rateVal">3.5%</span></div>
+        <input type="range" id="rate" min="2" max="6" value="3.5" step="0.5">
+        <div class="field-hint">Tasa conservadora en USD — pensada para sostenerse en distintos escenarios, no la más optimista posible.</div>
+      </div>
+    </div>
+
+    <div class="result-pane">
+      <div class="result-label">Proyección a tu retiro</div>
+      <div class="result-number">USD <span id="finalAmount">0</span></div>
+      <div class="result-breakdown">
+        <div class="bd-item">
+          <div class="bd-label">Vos aportaste</div>
+          <div class="bd-value" id="contributed">USD 0</div>
+        </div>
+        <div class="bd-item growth">
+          <div class="bd-label">Ganó por capitalización</div>
+          <div class="bd-value" id="grown">USD 0</div>
+        </div>
+      </div>
+      <div class="assumption-note" id="ageLabel">Desde los 32 hasta los 60 años · tasa conservadora del 3.5% anual</div>
+    </div>
+  </div>
+</div>
+
+<section class="timeline-section">
+  <div class="timeline-title">El camino de tu plata, año a año</div>
+  <div class="timeline-desc">No es una curva abstracta — es tu propia línea de tiempo, con tus edades reales.</div>
+  <div class="timeline-card">
+    <svg id="chartSvg" viewBox="0 0 900 260" preserveAspectRatio="none"></svg>
+    <div class="milestones" id="milestones"></div>
+  </div>
+</section>
+
+<div class="cta-card">
+  <div class="cta-inner">
+    <div class="cta-text">
+      <h3>¿Charlamos tu estrategia real?</h3>
+      <p>Esto es una proyección. La estrategia con instrumentos concretos la armamos juntas en una conversación de 20 minutos.</p>
+    </div>
+    <a class="btn-verde" href="https://calendar.app.google/4AC5GGEAwQohakPm8" target="_blank" rel="noopener">Agendar reunión →</a>
+  </div>
+</div>
+
+<p class="disclaimer">Proyección estimativa con capitalización compuesta mensual sobre una tasa fija conservadora asumida. No constituye asesoramiento personalizado ni garantía de rendimiento futuro — los instrumentos reales varían según el producto y el momento de mercado.</p>
+
+<footer>
+  <div class="footer-mat">Romina Suasnavar · Mat. 97898 SSN · Habilitada en toda la Argentina</div>
+</footer>
+
+<script>
+const $ = id => document.getElementById(id);
+const age = $('age'), retireAge = $('retireAge'), monthly = $('monthly'), rate = $('rate');
+
+function fmt(n) { return Math.round(n).toLocaleString('en-US'); }
+
+function calc() {
+  const a = parseInt(age.value);
+  const r = parseInt(retireAge.value);
+  const m = parseFloat(monthly.value);
+  const annualRate = parseFloat(rate.value) / 100;
+  const years = Math.max(r - a, 1);
+  const monthlyRate = annualRate / 12;
+  const months = years * 12;
+
+  let fv;
+  if (monthlyRate === 0) fv = m * months;
+  else fv = m * ((Math.pow(1 + monthlyRate, months) - 1) / monthlyRate) * (1 + monthlyRate);
+  const contributed = m * months;
+  const grown = fv - contributed;
+
+  $('ageVal').textContent = a + ' años';
+  $('retireVal').textContent = r + ' años';
+  $('monthlyVal').textContent = 'USD ' + fmt(m);
+  $('rateVal').textContent = annualRate * 100 + '%';
+  $('finalAmount').textContent = fmt(fv);
+  $('contributed').textContent = 'USD ' + fmt(contributed);
+  $('grown').textContent = 'USD ' + fmt(grown);
+  $('ageLabel').textContent = `Desde los ${a} hasta los ${r} años · tasa conservadora del ${annualRate * 100}% anual`;
+
+  drawChart(a, r, m, monthlyRate);
+}
+
+function drawChart(a, r, m, monthlyRate) {
+  const years = Math.max(r - a, 1);
+  const svg = $('chartSvg');
+  const W = 900, H = 260, padL = 10, padR = 10, padT = 20, padB = 30;
+  const points = [];
+  for (let y = 0; y <= years; y++) {
+    const months = y * 12;
+    let fv;
+    if (monthlyRate === 0) fv = m * months;
+    else fv = m * ((Math.pow(1 + monthlyRate, months) - 1) / monthlyRate) * (1 + monthlyRate);
+    points.push({ year: y, age: a + y, value: fv });
+  }
+  const maxVal = points[points.length - 1].value || 1;
+  const usableW = W - padL - padR;
+  const usableH = H - padT - padB;
+
+  const coords = points.map((p, i) => {
+    const x = padL + (i / years) * usableW;
+    const y = padT + usableH - (p.value / maxVal) * usableH;
+    return { x, y, ...p };
+  });
+
+  const linePath = coords.map((c, i) => (i === 0 ? 'M' : 'L') + c.x.toFixed(1) + ' ' + c.y.toFixed(1)).join(' ');
+  const areaPath = linePath + ` L ${coords[coords.length-1].x.toFixed(1)} ${H-padB} L ${coords[0].x.toFixed(1)} ${H-padB} Z`;
+
+  let svgContent = `
+    <defs>
+      <linearGradient id="areaGrad" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#1A5C38" stop-opacity="0.18"/>
+        <stop offset="100%" stop-color="#1A5C38" stop-opacity="0"/>
+      </linearGradient>
+    </defs>
+    <path d="${areaPath}" fill="url(#areaGrad)" />
+    <path d="${linePath}" fill="none" stroke="#236B44" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  `;
+  svgContent += `<line x1="${padL}" y1="${H-padB}" x2="${W-padR}" y2="${H-padB}" stroke="#E0D4BC" stroke-width="1.5"/>`;
+
+  const last = coords[coords.length - 1];
+  svgContent += `<circle cx="${last.x}" cy="${last.y}" r="6.5" fill="#B8924A" stroke="#fff" stroke-width="2.5"/>`;
+
+  svg.innerHTML = svgContent;
+
+  const milestoneCount = Math.min(4, years);
+  const step = years / milestoneCount;
+  const milestoneIdx = [];
+  for (let i = 1; i <= milestoneCount; i++) milestoneIdx.push(Math.round(i * step));
+  const uniqueIdx = [...new Set(milestoneIdx)].filter(i => i <= years);
+
+  const milestonesHtml = uniqueIdx.map((idx, i) => {
+    const p = points[idx];
+    let tag = 'A mitad de camino';
+    if (i === uniqueIdx.length - 1) tag = 'Tu retiro';
+    else if (i === 0) tag = 'Recién arrancando';
+    else tag = 'Se acerca';
+    return `<div class="milestone">
+      <div class="m-age">${p.age} años</div>
+      <div class="m-val">USD ${fmt(p.value)}</div>
+      <div class="m-tag">${tag}</div>
+    </div>`;
+  }).join('');
+
+  $('milestones').innerHTML = milestonesHtml;
+}
+
+[age, retireAge, monthly, rate].forEach(el => el.addEventListener('input', calc));
+calc();
+</script>
+
+</body>
+</html>

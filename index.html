@@ -1,0 +1,1145 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Romina Suasnavar · Seguros e Inversiones</title>
+<meta name="description" content="Asesora en seguros e inversiones. Una conversación, un diagnóstico, una estrategia que es tuya. Mat. 97898 SSN · Habilitada en toda la Argentina.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,300;1,400&display=swap" rel="stylesheet">
+
+<style>
+/* ── TOKENS ─────────────────────────────────────────────── */
+:root {
+  --crema:        #FAF7F1;
+  --arena:        #F0E9D8;
+  --arena-dark:   #E0D4BC;
+  --arena-deep:   #C8B99A;
+  --grafito:      #1E1E1C;
+  --grafito-mid:  #3A3A38;
+  --grafito-soft: #6E6A62;
+  --verde:        #1A5C38;
+  --verde-mid:    #236B44;
+  --verde-light:  #E6F2EC;
+  --verde-deep:   #B4D4C2;
+  --dorado:       #B8924A;
+  --dorado-light: #F5EAD4;
+  --blanco:       #FDFBF7;
+
+  --ff: 'Montserrat', sans-serif;
+  --max: 720px;
+  --r:   3px;
+  --rlg: 10px;
+  --sombra: 0 2px 20px rgba(30,30,28,0.07);
+  --sombra-h: 0 6px 28px rgba(30,30,28,0.12);
+}
+
+/* ── RESET ──────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--ff);
+  background: var(--crema);
+  color: var(--grafito);
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+a { color: inherit; text-decoration: none; }
+
+/* ── BASE ───────────────────────────────────────────────── */
+p { color: var(--grafito-soft); font-size: 14.5px; line-height: 1.85; font-weight: 300; }
+
+.label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--dorado);
+  display: block;
+  margin-bottom: 1.1rem;
+}
+
+section { padding: 88px 1.75rem; }
+.wrap { max-width: var(--max); margin: 0 auto; }
+
+/* ── NAV ────────────────────────────────────────────────── */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 1.75rem;
+  background: rgba(253,251,247,0.95);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--arena-dark);
+  transition: box-shadow 0.3s;
+}
+
+.nav-logo {
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: var(--grafito);
+}
+.nav-logo span { color: var(--dorado); }
+
+.nav-btn {
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--blanco);
+  background: var(--verde);
+  padding: 9px 22px;
+  border-radius: var(--r);
+  transition: background 0.2s;
+}
+.nav-btn:hover { background: var(--verde-mid); }
+
+/* ── HERO ────────────────────────────────────────────────── */
+#hero {
+  min-height: 100svh;
+  background: var(--verde);
+  display: flex;
+  align-items: center;
+  padding-top: 56px;
+  position: relative;
+  overflow: hidden;
+}
+
+#hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(circle at 80% 20%, rgba(255,255,255,0.04) 0%, transparent 50%),
+    radial-gradient(circle at 10% 80%, rgba(0,0,0,0.08) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+#hero::after {
+  content: '';
+  position: absolute;
+  top: 15%; right: 0;
+  width: 1px;
+  height: 40%;
+  background: linear-gradient(to bottom, transparent, rgba(184,146,74,0.4), transparent);
+  pointer-events: none;
+}
+
+.hero-inner {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 4rem 0;
+  position: relative;
+  z-index: 1;
+}
+
+.hero-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(184,146,74,0.9);
+  margin-bottom: 2rem;
+}
+.hero-eyebrow::before {
+  content: '';
+  width: 24px; height: 1px;
+  background: rgba(184,146,74,0.7);
+  flex-shrink: 0;
+}
+
+.hero-h {
+  font-size: clamp(36px, 8vw, 64px);
+  font-weight: 700;
+  color: var(--blanco);
+  letter-spacing: -0.02em;
+  line-height: 1.05;
+  max-width: 560px;
+}
+.hero-h em {
+  font-style: italic;
+  font-weight: 300;
+  color: rgba(255,255,255,0.65);
+}
+
+.hero-sub {
+  font-size: 15px;
+  color: rgba(255,255,255,0.72);
+  max-width: 460px;
+  margin: 2rem 0 3rem;
+  line-height: 1.85;
+  font-weight: 300;
+}
+.hero-sub strong {
+  color: rgba(255,255,255,0.95);
+  font-weight: 500;
+}
+
+.hero-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 11.5px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  background: var(--blanco);
+  color: var(--verde);
+  padding: 15px 34px;
+  border-radius: var(--r);
+  transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+}
+.hero-cta:hover {
+  background: var(--crema);
+  transform: translateY(-1px);
+  box-shadow: 0 8px 28px rgba(0,0,0,0.2);
+}
+.hero-cta svg { transition: transform 0.2s; }
+.hero-cta:hover svg { transform: translateX(3px); }
+
+.hero-autoridad {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  margin-top: 2.8rem;
+  font-size: 10.5px;
+  font-weight: 400;
+  color: rgba(255,255,255,0.3);
+  letter-spacing: 0.06em;
+}
+.hero-autoridad::before {
+  content: '';
+  width: 5px; height: 5px;
+  border-radius: 50%;
+  background: rgba(184,146,74,0.7);
+  flex-shrink: 0;
+}
+
+/* ── AGITACIÓN — LO QUE DICEN ────────────────────────────── */
+#social {
+  background: var(--crema);
+  border-top: 1px solid var(--arena-dark);
+  padding: 80px 1.75rem;
+}
+
+.social-intro {
+  font-size: clamp(22px, 4vw, 32px);
+  font-weight: 600;
+  color: var(--grafito);
+  max-width: 520px;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+  margin-bottom: 2.8rem;
+}
+.social-intro em {
+  font-style: italic;
+  font-weight: 300;
+  color: var(--grafito-soft);
+}
+
+.social-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 1.1rem;
+}
+
+.frase-card {
+  background: var(--arena);
+  border: 1px solid var(--arena-dark);
+  border-radius: var(--rlg);
+  padding: 1.8rem 1.5rem 1.5rem;
+  position: relative;
+  transition: box-shadow 0.2s, transform 0.2s;
+}
+.frase-card:hover {
+  box-shadow: var(--sombra);
+  transform: translateY(-2px);
+}
+.frase-card::before {
+  content: '\201C';
+  font-family: Georgia, serif;
+  font-size: 52px;
+  line-height: 1;
+  color: var(--dorado);
+  opacity: 0.28;
+  position: absolute;
+  top: 10px; left: 14px;
+}
+.frase-card p {
+  font-size: 15px;
+  font-style: italic;
+  font-weight: 400;
+  color: var(--grafito);
+  line-height: 1.5;
+  padding-top: 0.5rem;
+}
+
+/* ── SOLUCIÓN — EXPERIENCIA ──────────────────────────────── */
+#experiencia {
+  background: var(--arena);
+  border-top: 1px solid var(--arena-dark);
+}
+
+.exp-titulo {
+  font-size: clamp(28px, 5vw, 46px);
+  font-weight: 700;
+  color: var(--grafito);
+  max-width: 500px;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+.exp-titulo em {
+  font-style: italic;
+  font-weight: 300;
+  color: var(--verde);
+}
+
+.exp-cuerpo {
+  max-width: 560px;
+  margin-top: 2rem;
+}
+.exp-cuerpo p {
+  font-size: 15px;
+  color: var(--grafito-soft);
+  line-height: 1.85;
+  margin-bottom: 0.9rem;
+  font-weight: 300;
+}
+.exp-cuerpo p strong {
+  color: var(--grafito);
+  font-weight: 600;
+}
+
+.exp-divisor {
+  width: 36px; height: 1.5px;
+  background: var(--dorado);
+  margin: 2.4rem 0;
+  opacity: 0.6;
+}
+
+.exp-tres {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1px;
+  background: var(--arena-dark);
+  border-radius: var(--rlg);
+  overflow: hidden;
+  border: 1px solid var(--arena-dark);
+}
+
+.exp-paso {
+  background: var(--crema);
+  padding: 1.8rem 1.5rem;
+  transition: background 0.2s;
+}
+.exp-paso:hover { background: var(--blanco); }
+
+.exp-num {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  color: var(--dorado);
+  opacity: 0.8;
+  margin-bottom: 0.9rem;
+  text-transform: uppercase;
+}
+
+.exp-paso h3 {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--grafito);
+  margin-bottom: 0.5rem;
+  letter-spacing: -0.01em;
+}
+.exp-paso p {
+  font-size: 13px;
+  color: var(--grafito-soft);
+  line-height: 1.7;
+  font-weight: 300;
+}
+
+/* ── PARA QUIÉN ──────────────────────────────────────────── */
+#para-quien {
+  background: var(--verde);
+  position: relative;
+  overflow: hidden;
+}
+
+#para-quien::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 90% 50%, rgba(255,255,255,0.03) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+#para-quien .label { color: rgba(184,146,74,0.85); }
+
+.pq-pregunta {
+  font-size: clamp(24px, 5vw, 40px);
+  font-weight: 700;
+  color: var(--blanco);
+  max-width: 540px;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  margin-bottom: 3rem;
+}
+.pq-pregunta em {
+  font-style: italic;
+  font-weight: 300;
+  color: rgba(255,255,255,0.6);
+}
+
+.pq-lista {
+  display: flex;
+  flex-direction: column;
+  border-top: 1px solid rgba(255,255,255,0.1);
+  max-width: 560px;
+}
+
+.pq-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.2rem;
+  padding: 1.15rem 0;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.pq-dash {
+  width: 16px; height: 1.5px;
+  background: var(--dorado);
+  flex-shrink: 0;
+  margin-top: 11px;
+  opacity: 0.7;
+}
+
+.pq-item p {
+  font-size: 15px;
+  font-weight: 300;
+  color: rgba(255,255,255,0.72);
+  line-height: 1.6;
+}
+.pq-item p em {
+  font-style: normal;
+  font-weight: 600;
+  color: var(--blanco);
+}
+
+/* ── HERRAMIENTAS ────────────────────────────────────────── */
+#herramientas {
+  background: var(--crema);
+  border-top: 1px solid var(--arena-dark);
+}
+
+.herr-titulo {
+  font-size: clamp(26px, 4.6vw, 42px);
+  font-weight: 700;
+  color: var(--grafito);
+  max-width: 520px;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+}
+.herr-titulo em {
+  font-style: italic;
+  font-weight: 300;
+  color: var(--verde);
+}
+
+.herr-cuerpo {
+  max-width: 540px;
+  margin-top: 1.6rem;
+}
+
+.tools-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 1px;
+  background: var(--arena-dark);
+  border-radius: var(--rlg);
+  overflow: hidden;
+  border: 1px solid var(--arena-dark);
+  margin-top: 2.6rem;
+}
+
+.tool-card {
+  background: var(--blanco);
+  padding: 1.9rem 1.7rem;
+  display: block;
+  transition: background 0.2s;
+}
+.tool-card:hover { background: var(--arena); }
+
+.tool-eyebrow {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--dorado);
+  opacity: 0.85;
+  margin-bottom: 0.9rem;
+}
+.tool-card h3 {
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--grafito);
+  margin-bottom: 0.6rem;
+  letter-spacing: -0.01em;
+}
+.tool-card p {
+  font-size: 13px;
+  color: var(--grafito-soft);
+  line-height: 1.7;
+  font-weight: 300;
+}
+.tool-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  margin-top: 1.2rem;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--verde);
+}
+.tool-link .arrow { transition: transform 0.15s ease; }
+.tool-card:hover .tool-link .arrow { transform: translateX(3px); }
+
+/* ── RECURSO GRATUITO ────────────────────────────────────── */
+.recurso-box {
+  margin-top: 1.6rem;
+  background: var(--verde);
+  border-radius: var(--rlg);
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  position: relative;
+}
+.recurso-box::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 90% 10%, rgba(255,255,255,0.04) 0%, transparent 55%);
+  pointer-events: none;
+}
+@media (max-width: 640px) {
+  .recurso-box { grid-template-columns: 1fr; }
+}
+
+.recurso-info {
+  padding: 2.4rem 2.2rem;
+  position: relative;
+}
+.recurso-info .label { color: rgba(184,146,74,0.9); }
+.recurso-info h3 {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--blanco);
+  letter-spacing: -0.01em;
+  line-height: 1.3;
+  margin-bottom: 0.8rem;
+}
+.recurso-info h3 em { font-style: italic; font-weight: 300; color: rgba(255,255,255,0.65); }
+.recurso-info > p {
+  font-size: 13.5px;
+  color: rgba(255,255,255,0.68);
+  line-height: 1.75;
+  max-width: 340px;
+}
+
+.recurso-lista {
+  margin-top: 1.4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+.recurso-lista .r-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.7rem;
+  font-size: 12.5px;
+  color: rgba(255,255,255,0.72);
+  font-weight: 300;
+  line-height: 1.6;
+}
+.recurso-lista .r-dash {
+  width: 12px; height: 1.5px;
+  background: var(--dorado);
+  flex-shrink: 0;
+  margin-top: 8px;
+  opacity: 0.8;
+}
+.recurso-lista .r-item strong { color: var(--blanco); font-weight: 600; }
+
+.recurso-form-wrap {
+  background: rgba(0,0,0,0.12);
+  padding: 2.4rem 2.2rem;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.recurso-form-wrap .label { color: rgba(255,255,255,0.4); }
+.recurso-form-wrap h4 {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--blanco);
+  margin-bottom: 1.2rem;
+  line-height: 1.4;
+}
+.rf-input {
+  width: 100%;
+  padding: 12px 14px;
+  margin-bottom: 10px;
+  border: 1px solid rgba(255,255,255,0.18);
+  background: rgba(255,255,255,0.06);
+  border-radius: var(--r);
+  color: var(--blanco);
+  font-family: var(--ff);
+  font-size: 13px;
+  font-weight: 300;
+  outline: none;
+}
+.rf-input::placeholder { color: rgba(255,255,255,0.42); }
+.rf-input:focus { border-color: var(--dorado); }
+.rf-submit {
+  width: 100%;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  background: var(--dorado);
+  color: var(--grafito);
+  padding: 13px 20px;
+  border: none;
+  border-radius: var(--r);
+  cursor: pointer;
+  margin-top: 4px;
+  transition: background 0.2s;
+}
+.rf-submit:hover { background: var(--dorado-light); }
+.rf-note {
+  font-size: 10px;
+  color: rgba(255,255,255,0.4);
+  margin-top: 12px;
+  line-height: 1.6;
+}
+.rf-success {
+  display: none;
+  text-align: center;
+  padding: 10px 0;
+}
+.rf-success.show { display: block; }
+#leadForm.hide { display: none; }
+.rf-success .check {
+  width: 42px; height: 42px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.1);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 18px; color: var(--blanco);
+  margin: 0 auto 12px;
+}
+.rf-success h4 { color: var(--blanco); font-size: 15px; margin-bottom: 6px; }
+.rf-success p { font-size: 12px; color: rgba(255,255,255,0.6); }
+
+/* ── CTA FINAL ───────────────────────────────────────────── */
+#contacto {
+  background: var(--crema);
+  text-align: center;
+  border-top: 1px solid var(--arena-dark);
+}
+
+.cta-titulo {
+  font-size: clamp(30px, 6vw, 54px);
+  font-weight: 700;
+  color: var(--grafito);
+  max-width: 520px;
+  margin: 0 auto 0.3em;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+}
+.cta-titulo em {
+  font-style: italic;
+  font-weight: 300;
+  color: var(--verde);
+}
+
+.cta-sub {
+  font-size: 15px;
+  color: var(--grafito-soft);
+  max-width: 340px;
+  margin: 0.8rem auto 3rem;
+  font-weight: 300;
+  line-height: 1.75;
+}
+
+.cta-botones {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
+}
+
+.btn-verde {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  font-size: 11.5px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  background: var(--verde);
+  color: var(--blanco);
+  padding: 14px 32px;
+  border-radius: var(--r);
+  transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+}
+.btn-verde:hover {
+  background: var(--verde-mid);
+  transform: translateY(-1px);
+  box-shadow: var(--sombra-h);
+}
+
+.btn-outline {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  font-size: 11.5px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--grafito);
+  border: 1.5px solid var(--arena-deep);
+  padding: 14px 32px;
+  border-radius: var(--r);
+  transition: border-color 0.2s, background 0.2s;
+}
+.btn-outline:hover {
+  border-color: var(--grafito);
+  background: var(--arena);
+}
+
+.cta-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.6rem;
+  justify-content: center;
+  margin-top: 2rem;
+}
+.cta-links a {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--grafito-soft);
+  border-bottom: 1px solid var(--arena-deep);
+  padding-bottom: 2px;
+  transition: color 0.2s, border-color 0.2s;
+}
+.cta-links a:hover { color: var(--verde); border-color: var(--verde); }
+
+.cta-nota {
+  font-size: 11px;
+  letter-spacing: 0.07em;
+  color: var(--arena-deep);
+  margin-top: 2.2rem;
+}
+
+/* ── FOOTER ──────────────────────────────────────────────── */
+footer {
+  background: var(--grafito);
+  padding: 2.2rem 1.75rem;
+  text-align: center;
+}
+
+.footer-logo {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  color: rgba(253,251,247,0.35);
+  margin-bottom: 0.5rem;
+}
+.footer-logo span { color: var(--dorado); opacity: 0.6; }
+
+footer p {
+  font-size: 11px;
+  color: rgba(253,251,247,0.25);
+  line-height: 2;
+  font-weight: 300;
+}
+
+.footer-links {
+  display: flex;
+  justify-content: center;
+  gap: 1.2rem;
+  margin-top: 0.4rem;
+}
+.footer-links a {
+  font-size: 10.5px;
+  color: rgba(253,251,247,0.35);
+  letter-spacing: 0.06em;
+  transition: color 0.2s;
+}
+.footer-links a:hover { color: var(--dorado); }
+
+.footer-mat {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(26,92,56,0.7);
+  margin-top: 1rem;
+}
+.footer-mat::before {
+  content: '';
+  width: 5px; height: 5px;
+  background: var(--verde-mid);
+  border-radius: 50%;
+  opacity: 0.7;
+}
+
+/* ── ANIMACIONES ─────────────────────────────────────────── */
+.revelar {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.revelar.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ── RESPONSIVE ──────────────────────────────────────────── */
+@media (max-width: 560px) {
+  section { padding: 64px 1.25rem; }
+  .hero-inner { padding: 2.8rem 0; }
+  .cta-botones { flex-direction: column; align-items: stretch; }
+  .btn-verde, .btn-outline { justify-content: center; }
+  .exp-tres { grid-template-columns: 1fr; }
+  .tools-grid { grid-template-columns: 1fr; }
+  .recurso-box { grid-template-columns: 1fr; }
+}
+
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: var(--crema); }
+::-webkit-scrollbar-thumb { background: var(--arena-dark); border-radius: 3px; }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <div class="nav-logo">rs<span>.</span>finanzas.seguros</div>
+  <a href="#contacto" class="nav-btn">Hablemos</a>
+</nav>
+
+
+<!-- ① HERO · PROBLEMA -->
+<section id="hero">
+  <div class="hero-inner">
+
+    <div class="hero-eyebrow revelar">rs.finanzas.seguros</div>
+
+    <h1 class="hero-h revelar" style="transition-delay:.08s">
+      Trabajás, generás,<br>y sin embargo tu plata<br><em>no trabaja para vos.</em>
+    </h1>
+
+    <p class="hero-sub revelar" style="transition-delay:.18s">
+      Soy Romina. Asesora en seguros e inversiones.<br>
+      Empezamos con una <strong>conversación</strong>, después viene el <strong>diagnóstico</strong> y, si tiene sentido, una <strong>estrategia que es tuya.</strong>
+    </p>
+
+    <a href="#contacto" class="hero-cta revelar" style="transition-delay:.28s">
+      Hablemos
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+    </a>
+
+    <div class="hero-autoridad revelar" style="transition-delay:.36s">
+      Mat. 97898 SSN &nbsp;·&nbsp; Habilitada en toda la Argentina
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ② AGITACIÓN · LO QUE DICEN -->
+<section id="social">
+  <div class="wrap">
+
+    <p class="social-intro revelar">
+      Lo que escucho<br><em>en cada primera conversación.</em>
+    </p>
+
+    <div class="social-grid">
+
+      <div class="frase-card revelar" style="transition-delay:.05s">
+        <p>Gano bien pero nunca sé bien a dónde va mi plata.</p>
+      </div>
+
+      <div class="frase-card revelar" style="transition-delay:.12s">
+        <p>Tengo seguros pero no sé si me cubren lo que realmente importa.</p>
+      </div>
+
+      <div class="frase-card revelar" style="transition-delay:.19s">
+        <p>Quiero invertir pero no sé por dónde arrancar y no confío en cualquiera.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ③ SOLUCIÓN · CÓMO ES TRABAJAR CONMIGO -->
+<section id="experiencia">
+  <div class="wrap">
+    <span class="label revelar">Cómo es trabajar conmigo</span>
+
+    <h2 class="exp-titulo revelar" style="transition-delay:.08s">
+      Sin apuro.<br>Sin letra chica.<br><em>Sin vueltas.</em>
+    </h2>
+
+    <div class="exp-cuerpo revelar" style="transition-delay:.17s">
+      <p>
+        Una conversación honesta, 1 a 1. Te escucho, entiendo dónde estás parado
+        y te digo lo que veo — <strong>aunque no sea lo que esperabas.</strong>
+      </p>
+      <p>
+        De ahí sale un diagnóstico real: qué tenés, qué te falta, qué no necesitás.
+        Si tiene sentido construir algo juntos, diseñamos una estrategia a medida con
+        <strong>herramientas reguladas</strong> — seguros, inversiones, mercado de capitales.
+      </p>
+    </div>
+
+    <div class="exp-divisor revelar" style="transition-delay:.22s"></div>
+
+    <div class="exp-tres revelar" style="transition-delay:.27s">
+      <div class="exp-paso">
+        <div class="exp-num">01</div>
+        <h3>La conversación</h3>
+        <p>Me contás tu situación. Honesta, real, sin juicio. Es el punto de partida de todo.</p>
+      </div>
+      <div class="exp-paso">
+        <div class="exp-num">02</div>
+        <h3>El diagnóstico</h3>
+        <p>Analizo lo que tenés, lo que te falta y lo que quizás estás pagando de más. Todo claro, por escrito.</p>
+      </div>
+      <div class="exp-paso">
+        <div class="exp-num">03</div>
+        <h3>Tu estrategia</h3>
+        <p>Si avanzamos, es con un plan a medida. Seguros, ahorro, inversiones — lo que tiene sentido para vos.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ④ PARA QUIÉN -->
+<section id="para-quien">
+  <div class="wrap">
+    <span class="label revelar">Para quién</span>
+
+    <h2 class="pq-pregunta revelar" style="transition-delay:.08s">
+      ¿Cuándo fue la última vez que alguien te explicó, <em>en serio</em>, en qué está tu plata?
+    </h2>
+
+    <div class="pq-lista revelar" style="transition-delay:.18s">
+      <div class="pq-item">
+        <div class="pq-dash"></div>
+        <p>Ganás bien pero <em>nunca ordenaste tus finanzas de verdad.</em></p>
+      </div>
+      <div class="pq-item">
+        <div class="pq-dash"></div>
+        <p>Tenés empresa y los seguros son un gasto que <em>no terminás de entender.</em></p>
+      </div>
+      <div class="pq-item">
+        <div class="pq-dash"></div>
+        <p>Querés empezar a invertir y <em>no sabés por dónde agarrarlo.</em></p>
+      </div>
+      <div class="pq-item">
+        <div class="pq-dash"></div>
+        <p>Ya tenés algo armado pero <em>hace tiempo que nadie lo revisa.</em></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ⑤ HERRAMIENTAS · CALCULADORAS + RECURSO -->
+<section id="herramientas">
+  <div class="wrap">
+    <span class="label revelar">Probá antes de decidir</span>
+
+    <h2 class="herr-titulo revelar" style="transition-delay:.08s">
+      Mirá tus números,<br><em>hoy mismo.</em>
+    </h2>
+
+    <div class="herr-cuerpo revelar" style="transition-delay:.16s">
+      <p>Dos herramientas simples para que veas de qué estamos hablando, antes de la primera conversación.</p>
+    </div>
+
+    <div class="tools-grid revelar" style="transition-delay:.22s">
+      <a class="tool-card" href="calculadora-capitalizacion.html" target="_blank" rel="noopener">
+        <div class="tool-eyebrow">Capitalización en USD</div>
+        <h3>¿En cuánto se convierte tu ahorro?</h3>
+        <p>Movés edad, aporte mensual y tasa, y ves la proyección a tu retiro, año a año.</p>
+        <span class="tool-link">Probar la calculadora <span class="arrow">→</span></span>
+      </a>
+      <a class="tool-card" href="calculadora-seguro-vida.html" target="_blank" rel="noopener">
+        <div class="tool-eyebrow">Cobertura de seguro de vida</div>
+        <h3>¿Cuánto necesitaría tu familia?</h3>
+        <p>Cargá tu ingreso, deudas e hijos, y mirá dos formas distintas de estimar la cobertura.</p>
+        <span class="tool-link">Probar la calculadora <span class="arrow">→</span></span>
+      </a>
+    </div>
+
+    <div class="recurso-box revelar" style="transition-delay:.3s">
+      <div class="recurso-info">
+        <span class="label">Recurso gratuito · Paso 1</span>
+        <h3>Recibí tu <em>Mapa Financiero</em></h3>
+        <p>La planilla que uso con mis clientes para ver, de un vistazo, en qué está su plata hoy — antes de hablar de ahorro o cobertura.</p>
+        <div class="recurso-lista">
+          <div class="r-item"><div class="r-dash"></div><p><strong>Ingresos y gastos</strong> con gráfico automático.</p></div>
+          <div class="r-item"><div class="r-dash"></div><p><strong>Deudas y meta de pago</strong>, priorizadas.</p></div>
+        </div>
+      </div>
+      <div class="recurso-form-wrap">
+        <span class="label">Descarga gratuita</span>
+        <h4>Te lo mandamos a tu correo</h4>
+        <form id="leadForm">
+          <input class="rf-input" type="text" id="leadName" name="name" placeholder="Tu nombre" required>
+          <input class="rf-input" type="email" id="leadEmail" name="email" placeholder="Tu email" required>
+          <button type="submit" class="rf-submit" id="leadSubmitBtn">Quiero mi Mapa Financiero</button>
+          <div class="rf-note">Sin spam. Podés darte de baja cuando quieras.</div>
+        </form>
+        <div class="rf-success" id="successState">
+          <div class="check">✓</div>
+          <h4>¡Listo!</h4>
+          <p>Revisá tu correo — te acaba de llegar.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ⑥ CTA FINAL -->
+<section id="contacto">
+  <div class="wrap">
+    <span class="label revelar" style="text-align:center">Empezá por acá</span>
+
+    <h2 class="cta-titulo revelar" style="transition-delay:.08s">
+      Una conversación.<br>Un diagnóstico.<br><em>Una estrategia que es tuya.</em>
+    </h2>
+
+    <p class="cta-sub revelar" style="transition-delay:.16s">
+      Escribime. Yo te respondo.
+    </p>
+
+    <div class="cta-botones revelar" style="transition-delay:.24s">
+      <a href="https://calendar.app.google/4AC5GGEAwQohakPm8" target="_blank" rel="noopener" class="btn-verde">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        Agendar una reunión
+      </a>
+      <a href="https://wa.me/54911557073333" target="_blank" rel="noopener" class="btn-outline">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+        WhatsApp
+      </a>
+    </div>
+
+    <div class="cta-links revelar" style="transition-delay:.3s">
+      <a href="https://instagram.com/rs.finanzas.seguros" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://www.linkedin.com/in/romina-suasnavar-385420186/" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="tel:+5411557073333">11 55707-3333</a>
+    </div>
+
+    <p class="cta-nota revelar" style="transition-delay:.36s">
+      Mat. 97898 SSN &nbsp;·&nbsp; Habilitada en toda la Argentina
+    </p>
+  </div>
+</section>
+
+
+<!-- FOOTER -->
+<footer>
+  <p class="footer-logo">rs<span>.</span>finanzas.seguros</p>
+  <p>Romina Suasnavar · Asesora en Seguros e Inversiones</p>
+  <div class="footer-links">
+    <a href="https://instagram.com/rs.finanzas.seguros" target="_blank" rel="noopener">Instagram</a>
+    <a href="https://www.linkedin.com/in/romina-suasnavar-385420186/" target="_blank" rel="noopener">LinkedIn</a>
+    <a href="tel:+5411557073333">11 55707-3333</a>
+  </div>
+  <div class="footer-mat">Mat. 97898 SSN · Habilitada en toda la Argentina</div>
+</footer>
+
+
+<script>
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        obs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.08, rootMargin: '0px 0px -24px 0px' });
+  document.querySelectorAll('.revelar').forEach(el => obs.observe(el));
+
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => {
+    nav.style.boxShadow = window.scrollY > 20
+      ? '0 2px 20px rgba(30,30,28,0.08)'
+      : 'none';
+  }, { passive: true });
+
+  // Envía cada lead directo a tu Gmail (asesora.rominasuasnavar@gmail.com) usando
+  // FormSubmit — no requiere backend ni cuenta propia. OJO: la primera vez que alguien
+  // complete este formulario en el sitio ya publicado, FormSubmit te manda un mail a vos
+  // pidiendo que confirmes ("Confirm my email now") — hacé click ahí una sola vez para
+  // activarlo. Antes de esa confirmación los envíos no llegan.
+  const leadForm = document.getElementById('leadForm');
+  const successState = document.getElementById('successState');
+  const leadSubmitBtn = document.getElementById('leadSubmitBtn');
+  if (leadForm) {
+    leadForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      leadSubmitBtn.textContent = 'Enviando...';
+      leadSubmitBtn.disabled = true;
+
+      const payload = {
+        name: document.getElementById('leadName').value,
+        email: document.getElementById('leadEmail').value,
+        _subject: 'Nuevo lead — Mapa Financiero (rs.finanzas.seguros)'
+      };
+
+      fetch('https://formsubmit.co/ajax/asesora.rominasuasnavar@gmail.com', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify(payload)
+      })
+        .then(() => {
+          leadForm.classList.add('hide');
+          successState.classList.add('show');
+        })
+        .catch(() => {
+          leadSubmitBtn.textContent = 'Reintentar';
+          leadSubmitBtn.disabled = false;
+        });
+    });
+  }
+</script>
+
+</body>
+</html>
